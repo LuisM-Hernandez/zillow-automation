@@ -13,13 +13,13 @@ test('has title', async ({ page }) => {
   await page.getByRole('link', { name: 'Sign In' }).click();
   
   //Add your email and password to the fill the fields
-  await page.getByPlaceholder('Enter email').fill("mr.robot.o@outlook.com");
-  await page.getByPlaceholder('Enter password').fill("RobieOto123!");
+  await page.getByPlaceholder('Enter email').fill("PROVIDE EMAIL");
+  await page.getByPlaceholder('Enter password').fill("PROVIDE PASSWORD");
   await page.getByRole('button', {name: 'Sign in'}).click();
   
   //Searchbar fill
   await page.getByRole('button', { name: 'Got it!' }).click();
-  await page.getByPlaceholder('Enter an address, neighborhood, city, or ZIP code').fill("Orlando");
+  await page.getByPlaceholder('Enter an address, neighborhood, city, or ZIP code').fill("PROVIDE CITY");
   // await page.waitForTimeout(2000);
   await page.getByRole('button', {name: 'Submit Search'}).click();
   //This timeout is set so the test keeps running
@@ -65,7 +65,7 @@ test('has title', async ({ page }) => {
          // Extract the text content of the current list item element
         const textContent = await page.evaluate(li => li.textContent, liElement);
         // Check if the text content includes the specified string '32811'
-        if (textContent?.includes('32811')) {
+        if (textContent?.includes('PROVIDE ZIP CODE')) {
         // Find a button element within the current list item element
           const button = await liElement.$('button');
         // If a button is found, wait for a timeout, click the button, and log the text content
