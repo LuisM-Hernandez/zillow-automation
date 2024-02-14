@@ -8,13 +8,16 @@ test('has title', async ({ page }) => {
   // Login and House filtering preferences
   const email = "ENTER YOUR EMAIL";
   const password = "ENTER YOUR PASSWORD";
+  const city = "ENTER CITY NAME"
   const bedAmount = "ENTER YOUR NUMBER IN THIS FORMAT (3+)"
   const bathAmount = "ENTER YOUR NUMBER IN THIS FORMAT (3+)"
+  const maxPriceRange = "ENTER MAX PRICE RANGE IN THIS FORMAT (400,000)"
   const zipCode = "ENTER THE ZIPCODE"
-
+  
   //Opens zillow and log the user in
   await page.goto('https://www.zillow.com/');
-
+  // await page.pause();
+  
   //It closes the google popup
   await page.frameLocator('iframe[title="Sign in with Google Dialog"]').getByLabel('Close').click();
   await page.getByRole('link', { name: 'Sign In' }).click();
@@ -27,7 +30,7 @@ test('has title', async ({ page }) => {
   
   //Searchbar fill
   await page.getByRole('button', { name: 'Got it!' }).click();
-  await page.getByPlaceholder('Enter an address, neighborhood, city, or ZIP code').fill("Orlando");
+  await page.getByPlaceholder('Enter an address, neighborhood, city, or ZIP code').fill(city);
   // await page.waitForTimeout(2000);
   await page.getByRole('button', {name: 'Submit Search'}).click();
   //This timeout is set so the test keeps running
@@ -44,11 +47,10 @@ test('has title', async ({ page }) => {
 
   // Filter Price
    await page.locator('[data-test="price-filters-button"]').click();
-   await page.getByLabel('Price max').fill("400,000");
+   await page.getByLabel('Price max').fill(maxPriceRange);
    await page.getByRole('button', {name: 'Apply'}).click();
      //This timeout is set so the test keeps running
   await page.waitForTimeout(2000);
-  await page.pause();
 
 
   const liCount = await page.$$eval('.List-c11n-8-84-3__sc-1smrmqp-0 > li', lis => lis.length);

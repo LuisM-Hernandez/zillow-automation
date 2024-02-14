@@ -11,12 +11,8 @@
 
   ## Usage
   1. [Need to have an account on zillow]
-  2. [On line 16 add your Email]
-  3. [On line 17 add your password]
-  4. [On line 22 add a city]
-  5. [Lines 32 (beds), 33 (baths) and 38 (price) you can change it to whatever options you like]
-  6. [On line 68 provide a zip code]
-  
+  2. [On line 9 - 15 add/replace with your email, password, city, zipcode and filtering preferences]
+
   I made this as a learning experience using playwright, its functional but still in development for further improvements.
   It will only run firefox web browser for the automation because bot detection is quicker on Chrome.
 
@@ -34,6 +30,3 @@
   ## License
 
     This project is licensed under the MIT license.
-
-    
-
